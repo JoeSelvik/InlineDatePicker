@@ -22,6 +22,7 @@
 		884519101969AD5C005CBD14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884518EF1969AD5B005CBD14 /* UIKit.framework */; };
 		884519181969AD5C005CBD14 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 884519161969AD5C005CBD14 /* InfoPlist.strings */; };
 		8845191A1969AD5C005CBD14 /* InlineDatePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 884519191969AD5C005CBD14 /* InlineDatePickerTests.m */; };
+		88C036591969B55E0008B0E4 /* TNTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C036581969B55E0008B0E4 /* TNTPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		884519151969AD5C005CBD14 /* InlineDatePickerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InlineDatePickerTests-Info.plist"; sourceTree = "<group>"; };
 		884519171969AD5C005CBD14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		884519191969AD5C005CBD14 /* InlineDatePickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InlineDatePickerTests.m; sourceTree = "<group>"; };
+		88C036571969B55E0008B0E4 /* TNTPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNTPerson.h; sourceTree = "<group>"; };
+		88C036581969B55E0008B0E4 /* TNTPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNTPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				884518FD1969AD5B005CBD14 /* Main.storyboard */,
 				884519001969AD5B005CBD14 /* TNTPeopleViewController.h */,
 				884519011969AD5B005CBD14 /* TNTPeopleViewController.m */,
+				88C036571969B55E0008B0E4 /* TNTPerson.h */,
+				88C036581969B55E0008B0E4 /* TNTPerson.m */,
 				884519031969AD5B005CBD14 /* TNTDetailViewController.h */,
 				884519041969AD5B005CBD14 /* TNTDetailViewController.m */,
 				884519061969AD5B005CBD14 /* Images.xcassets */,
@@ -256,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				884519051969AD5B005CBD14 /* TNTDetailViewController.m in Sources */,
+				88C036591969B55E0008B0E4 /* TNTPerson.m in Sources */,
 				884518F81969AD5B005CBD14 /* main.m in Sources */,
 				884519021969AD5B005CBD14 /* TNTPeopleViewController.m in Sources */,
 				884518FC1969AD5B005CBD14 /* TNTAppDelegate.m in Sources */,

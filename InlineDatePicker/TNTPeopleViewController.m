@@ -7,18 +7,23 @@
 //
 
 #import "TNTPeopleViewController.h"
-
+#import "TNTPerson.h"
 #import "TNTDetailViewController.h"
+
 
 static NSString *kPersonCellID = @"personCell";
 static NSString *kDatePickerCellID = @"datePickerCell";
+
 
 @interface TNTPeopleViewController ()
 
 @property (strong, nonatomic) NSMutableArray *persons;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@property (strong, nonatomic) NSIndexPath *datePickerIndexPath;
 
 @end
+
+
 
 @implementation TNTPeopleViewController
 
@@ -40,6 +45,28 @@ static NSString *kDatePickerCellID = @"datePickerCell";
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+}
+
+// Create fake data
+- (void)createFakeData {
+    TNTPerson *p1 = [[TNTPerson alloc] initWithName:@"John Smith"
+                                        dateOfBirth:[NSDate dateWithTimeIntervalSince1970:632448000]
+                                       placeOfBirth:@"London"];
+    
+    TNTPerson *p2 = [[TNTPerson alloc] initWithName:@"Jane Anderson"
+                                        dateOfBirth:[NSDate dateWithTimeIntervalSince1970:123456789]
+                                       placeOfBirth:@"San Francisco"];
+    
+    if (!self.persons) {
+        self.persons = [[NSMutableArray alloc] init];
+    }
+    
+    [self.persons addObject:p1];
+    [self.persons addObject:p2];
+}
+
+- (BOOL)datePickerIsShown {
+    return self.datePickerIndexPath != nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,7 +94,13 @@ static NSString *kDatePickerCellID = @"datePickerCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    NSInteger numberOfRows = [self.persons count];
+    
+    if ([self datePickerIsShown]) {
+        numberOfRows++;
+    }
+    
+    return numberOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
