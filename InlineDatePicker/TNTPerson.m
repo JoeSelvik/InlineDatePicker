@@ -16,7 +16,7 @@
         
         _name = [name copy];
         _dateOfBirth = dateOfBirth;
-        _placeOfBirth = placeOfBirth;
+        _placeOfBirth = [placeOfBirth copy];
     }
     
     return self;
