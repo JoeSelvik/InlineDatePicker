@@ -13,6 +13,7 @@
 
 static NSString *kPersonCellID = @"personCell";
 static NSString *kDatePickerCellID = @"datePickerCell";
+static NSInteger kDatePickerTag = 1;
 
 
 @interface TNTPeopleViewController ()
@@ -103,14 +104,48 @@ static NSString *kDatePickerCellID = @"datePickerCell";
     return numberOfRows;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    UITableViewCell *cell;
+    
+    if ([self datePickerIsShown] && (self.datePickerIndexPath.row == indexPath.row)) {
+        
+        TNTPerson *person = self.persons[indexPath.row -1];
+        cell = [self createPickerCell:person.dateOfBirth];
+        
+    } else {
+        
+        TNTPerson *person = self.persons[indexPath.row];
+        cell = [self createPersonCell:person];
+        
+    }
+    
     return cell;
 }
+
+- (UITableViewCell *)createPersonCell:(TNTPerson *)person {
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kPersonCellID];
+    
+    cell.textLabel.text = person.name;
+    
+    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:person.dateOfBirth];
+    
+    return cell;
+}
+
+- (UITableViewCell *)createPickerCell:(NSDate *)date {
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kDatePickerCellID];
+    
+    UIDatePicker *targetedDatePicker = (UIDatePicker *)[cell viewWithTag:kDatePickerTag];
+    
+    [targetedDatePicker setDate:date animated:NO];
+    
+    return cell;
+}
+
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
