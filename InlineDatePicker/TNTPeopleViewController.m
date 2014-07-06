@@ -151,6 +151,71 @@ static NSInteger kDatePickerTag = 1;
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.tableView beginUpdates];
+    
+    if ([self datePickerIsShown] && (self.datePickerIndexPath.row - 1 == indexPath.row)) {
+        
+        [self hideExistingPicker];
+        
+    } else {
+        NSIndexPath *newPickerIndexPath = [self calculateIndexPathForNewPicker:indexPath];
+        
+        if ([self datePickerIsShown]) {
+            [self hideExistingPicker];
+        }
+        
+        [self showNewPickerAtIndex:newPickerIndexPath];
+        self.datePickerIndexPath = [NSIndexPath indexPathForRow:newPickerIndexPath.row + 1 inSection:0];
+    }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self.tableView endUpdates];
+}
+
+// Delete the old datePicker cell
+- (void)hideExistingPicker {
+    
+    [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.datePickerIndexPath.row inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationFade];
+    
+    self.datePickerIndexPath = nil;
+}
+
+// If a date picker is visible and is above the currently selected index then we need to
+// remeber that the cell will be deleted from the table
+// If the date picker is below then it won't impact the new date picker.
+- (NSIndexPath *)calculateIndexPathForNewPicker:(NSIndexPath *)selectedIndexPath {
+    
+    NSIndexPath *newIndexPath;
+    
+    if (([self datePickerIsShown]) && (self.datePickerIndexPath.row < selectedIndexPath.row)) {
+        
+        newIndexPath = [NSIndexPath indexPathForRow:selectedIndexPath.row -1 inSection:0];
+        
+    } else {
+        
+        newIndexPath = [NSIndexPath indexPathForRow:selectedIndexPath.row inSection:0];
+        
+    }
+    
+    return newIndexPath;
+}
+
+// Need to insert a new datePicker cell in the TV
+- (void)showNewPickerAtIndex:(NSIndexPath *)indexPath {
+    
+    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:indexPath.row +1  inSection:0]];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
