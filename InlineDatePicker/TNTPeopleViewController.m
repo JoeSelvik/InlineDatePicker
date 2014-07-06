@@ -39,6 +39,7 @@ static NSInteger kDatePickerTag = 1;
 	// Do any additional setup after loading the view, typically from a nib.
     
     [self createDateFormatter];
+    [self createFakeData];
 }
 
 // Helper method to instantiate the date formatter
@@ -78,10 +79,13 @@ static NSInteger kDatePickerTag = 1;
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
+    //if (!_objects) {
+    if (!_persons) {
+        //_objects = [[NSMutableArray alloc] init];
+        _persons = [[NSMutableArray alloc] init];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
+    //[_objects insertObject:[NSDate date] atIndex:0];
+    [_persons insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -156,7 +160,8 @@ static NSInteger kDatePickerTag = 1;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        //[_objects removeObjectAtIndex:indexPath.row];
+        [_persons removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -183,7 +188,8 @@ static NSInteger kDatePickerTag = 1;
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
+        //NSDate *object = _objects[indexPath.row];
+        NSDate *object = _persons[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
 }
