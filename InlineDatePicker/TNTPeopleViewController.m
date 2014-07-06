@@ -6,16 +6,21 @@
 //  Copyright (c) 2014 The New Tricks. All rights reserved.
 //
 
-#import "TNTMasterViewController.h"
+#import "TNTPeopleViewController.h"
 
 #import "TNTDetailViewController.h"
 
-@interface TNTMasterViewController () {
-    NSMutableArray *_objects;
-}
+static NSString *kPersonCellID = @"personCell";
+static NSString *kDatePickerCellID = @"datePickerCell";
+
+@interface TNTPeopleViewController ()
+
+@property (strong, nonatomic) NSMutableArray *persons;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+
 @end
 
-@implementation TNTMasterViewController
+@implementation TNTPeopleViewController
 
 - (void)awakeFromNib
 {
@@ -26,10 +31,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    [self createDateFormatter];
+}
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+// Helper method to instantiate the date formatter
+- (void)createDateFormatter {
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
 }
 
 - (void)didReceiveMemoryWarning

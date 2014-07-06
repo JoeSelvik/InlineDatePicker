@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TNTMasterViewController : UITableViewController
+@interface TNTPeopleViewController : UITableViewController
 
 @end

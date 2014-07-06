@@ -14,7 +14,7 @@
 		884518F81969AD5B005CBD14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 884518F71969AD5B005CBD14 /* main.m */; };
 		884518FC1969AD5B005CBD14 /* TNTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 884518FB1969AD5B005CBD14 /* TNTAppDelegate.m */; };
 		884518FF1969AD5B005CBD14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884518FD1969AD5B005CBD14 /* Main.storyboard */; };
-		884519021969AD5B005CBD14 /* TNTMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884519011969AD5B005CBD14 /* TNTMasterViewController.m */; };
+		884519021969AD5B005CBD14 /* TNTPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884519011969AD5B005CBD14 /* TNTPeopleViewController.m */; };
 		884519051969AD5B005CBD14 /* TNTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884519041969AD5B005CBD14 /* TNTDetailViewController.m */; };
 		884519071969AD5B005CBD14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884519061969AD5B005CBD14 /* Images.xcassets */; };
 		8845190E1969AD5B005CBD14 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8845190D1969AD5B005CBD14 /* XCTest.framework */; };
@@ -46,8 +46,8 @@
 		884518FA1969AD5B005CBD14 /* TNTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTAppDelegate.h; sourceTree = "<group>"; };
 		884518FB1969AD5B005CBD14 /* TNTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTAppDelegate.m; sourceTree = "<group>"; };
 		884518FE1969AD5B005CBD14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		884519001969AD5B005CBD14 /* TNTMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTMasterViewController.h; sourceTree = "<group>"; };
-		884519011969AD5B005CBD14 /* TNTMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTMasterViewController.m; sourceTree = "<group>"; };
+		884519001969AD5B005CBD14 /* TNTPeopleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTPeopleViewController.h; sourceTree = "<group>"; };
+		884519011969AD5B005CBD14 /* TNTPeopleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTPeopleViewController.m; sourceTree = "<group>"; };
 		884519031969AD5B005CBD14 /* TNTDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTDetailViewController.h; sourceTree = "<group>"; };
 		884519041969AD5B005CBD14 /* TNTDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTDetailViewController.m; sourceTree = "<group>"; };
 		884519061969AD5B005CBD14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 				884518FA1969AD5B005CBD14 /* TNTAppDelegate.h */,
 				884518FB1969AD5B005CBD14 /* TNTAppDelegate.m */,
 				884518FD1969AD5B005CBD14 /* Main.storyboard */,
-				884519001969AD5B005CBD14 /* TNTMasterViewController.h */,
-				884519011969AD5B005CBD14 /* TNTMasterViewController.m */,
+				884519001969AD5B005CBD14 /* TNTPeopleViewController.h */,
+				884519011969AD5B005CBD14 /* TNTPeopleViewController.m */,
 				884519031969AD5B005CBD14 /* TNTDetailViewController.h */,
 				884519041969AD5B005CBD14 /* TNTDetailViewController.m */,
 				884519061969AD5B005CBD14 /* Images.xcassets */,
@@ -257,7 +257,7 @@
 			files = (
 				884519051969AD5B005CBD14 /* TNTDetailViewController.m in Sources */,
 				884518F81969AD5B005CBD14 /* main.m in Sources */,
-				884519021969AD5B005CBD14 /* TNTMasterViewController.m in Sources */,
+				884519021969AD5B005CBD14 /* TNTPeopleViewController.m in Sources */,
 				884518FC1969AD5B005CBD14 /* TNTAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +463,7 @@
 				8845191F1969AD5C005CBD14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		884519201969AD5C005CBD14 /* Build configuration list for PBXNativeTarget "InlineDatePickerTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +472,7 @@
 				884519221969AD5C005CBD14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
