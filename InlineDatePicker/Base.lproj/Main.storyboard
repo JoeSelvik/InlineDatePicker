@@ -87,6 +87,9 @@ AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </mutableData>
                                             </timeZone>
+                                            <connections>
+                                                <action selector="dateChanged:" destination="pGg-6v-bdr" eventType="valueChanged" id="zhC-iz-ctg"/>
+                                            </connections>
                                         </datePicker>
                                     </subviews>
                                     <constraints>

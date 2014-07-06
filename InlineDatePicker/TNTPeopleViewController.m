@@ -13,7 +13,11 @@
 
 static NSString *kPersonCellID = @"personCell";
 static NSString *kDatePickerCellID = @"datePickerCell";
-static NSInteger kDatePickerTag = 1;
+//static NSInteger kDatePickerTag = 1;
+
+enum MyViewTags {
+    kDatePickerTag = 1
+};
 
 
 @interface TNTPeopleViewController ()
@@ -21,6 +25,9 @@ static NSInteger kDatePickerTag = 1;
 @property (strong, nonatomic) NSMutableArray *persons;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSIndexPath *datePickerIndexPath;
+@property CGFloat pickerCellRowHeight;
+
+- (IBAction)dateChanged:(id)sender;
 
 @end
 
@@ -40,6 +47,9 @@ static NSInteger kDatePickerTag = 1;
     
     [self createDateFormatter];
     [self createFakeData];
+    
+    UITableViewCell *pickerViewCellToCheck = [self.tableView dequeueReusableCellWithIdentifier:kDatePickerCellID];
+    self.pickerCellRowHeight = pickerViewCellToCheck.frame.size.height;
 }
 
 // Helper method to instantiate the date formatter
@@ -115,7 +125,7 @@ static NSInteger kDatePickerTag = 1;
     
     if ([self datePickerIsShown] && (self.datePickerIndexPath.row == indexPath.row)) {
         
-        TNTPerson *person = self.persons[indexPath.row -1];
+        TNTPerson *person = self.persons[indexPath.row - 1];
         cell = [self createPickerCell:person.dateOfBirth];
         
     } else {
@@ -175,6 +185,7 @@ static NSInteger kDatePickerTag = 1;
     [self.tableView endUpdates];
 }
 
+
 // Delete the old datePicker cell
 - (void)hideExistingPicker {
     
@@ -214,6 +225,16 @@ static NSInteger kDatePickerTag = 1;
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGFloat rowHeight = self.tableView.rowHeight;
+    
+    if ([self datePickerIsShown] && (self.datePickerIndexPath.row == indexPath.row)) {
+        rowHeight = self.pickerCellRowHeight;
+    }
+    
+    return rowHeight;
+}
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -258,5 +279,23 @@ static NSInteger kDatePickerTag = 1;
         [[segue destinationViewController] setDetailItem:object];
     }
 }
+
+- (IBAction)dateChanged:(UIDatePicker *)sender {
+    
+    NSIndexPath *parentCellIndexPath = nil;
+    
+    if ([self datePickerIsShown]) {
+        parentCellIndexPath = [NSIndexPath indexPathForRow:self.datePickerIndexPath.row - 1 inSection:0];
+    } else {
+        return;
+    }
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:parentCellIndexPath];
+    TNTPerson *person = self.persons[parentCellIndexPath.row];
+    person.dateOfBirth = sender.date;
+    
+    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:sender.date];
+}
+
 
 @end
