@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88082723196BB84500CAFF7F /* TNTAddPersonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88082722196BB84500CAFF7F /* TNTAddPersonTableViewController.m */; };
 		884518EC1969AD5B005CBD14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884518EB1969AD5B005CBD14 /* Foundation.framework */; };
 		884518EE1969AD5B005CBD14 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884518ED1969AD5B005CBD14 /* CoreGraphics.framework */; };
 		884518F01969AD5B005CBD14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884518EF1969AD5B005CBD14 /* UIKit.framework */; };
@@ -15,7 +16,6 @@
 		884518FC1969AD5B005CBD14 /* TNTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 884518FB1969AD5B005CBD14 /* TNTAppDelegate.m */; };
 		884518FF1969AD5B005CBD14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 884518FD1969AD5B005CBD14 /* Main.storyboard */; };
 		884519021969AD5B005CBD14 /* TNTPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884519011969AD5B005CBD14 /* TNTPeopleViewController.m */; };
-		884519051969AD5B005CBD14 /* TNTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 884519041969AD5B005CBD14 /* TNTDetailViewController.m */; };
 		884519071969AD5B005CBD14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 884519061969AD5B005CBD14 /* Images.xcassets */; };
 		8845190E1969AD5B005CBD14 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8845190D1969AD5B005CBD14 /* XCTest.framework */; };
 		8845190F1969AD5C005CBD14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 884518EB1969AD5B005CBD14 /* Foundation.framework */; };
@@ -36,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		88082721196BB84500CAFF7F /* TNTAddPersonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TNTAddPersonTableViewController.h; path = ../TNTAddPersonTableViewController.h; sourceTree = "<group>"; };
+		88082722196BB84500CAFF7F /* TNTAddPersonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TNTAddPersonTableViewController.m; path = ../TNTAddPersonTableViewController.m; sourceTree = "<group>"; };
 		884518E81969AD5B005CBD14 /* InlineDatePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InlineDatePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		884518EB1969AD5B005CBD14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		884518ED1969AD5B005CBD14 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,8 +51,6 @@
 		884518FE1969AD5B005CBD14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		884519001969AD5B005CBD14 /* TNTPeopleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTPeopleViewController.h; sourceTree = "<group>"; };
 		884519011969AD5B005CBD14 /* TNTPeopleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTPeopleViewController.m; sourceTree = "<group>"; };
-		884519031969AD5B005CBD14 /* TNTDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTDetailViewController.h; sourceTree = "<group>"; };
-		884519041969AD5B005CBD14 /* TNTDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTDetailViewController.m; sourceTree = "<group>"; };
 		884519061969AD5B005CBD14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8845190C1969AD5B005CBD14 /* InlineDatePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InlineDatePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8845190D1969AD5B005CBD14 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -118,6 +118,8 @@
 		884518F11969AD5B005CBD14 /* InlineDatePicker */ = {
 			isa = PBXGroup;
 			children = (
+				88082721196BB84500CAFF7F /* TNTAddPersonTableViewController.h */,
+				88082722196BB84500CAFF7F /* TNTAddPersonTableViewController.m */,
 				884518FA1969AD5B005CBD14 /* TNTAppDelegate.h */,
 				884518FB1969AD5B005CBD14 /* TNTAppDelegate.m */,
 				884518FD1969AD5B005CBD14 /* Main.storyboard */,
@@ -125,8 +127,6 @@
 				884519011969AD5B005CBD14 /* TNTPeopleViewController.m */,
 				88C036571969B55E0008B0E4 /* TNTPerson.h */,
 				88C036581969B55E0008B0E4 /* TNTPerson.m */,
-				884519031969AD5B005CBD14 /* TNTDetailViewController.h */,
-				884519041969AD5B005CBD14 /* TNTDetailViewController.m */,
 				884519061969AD5B005CBD14 /* Images.xcassets */,
 				884518F21969AD5B005CBD14 /* Supporting Files */,
 			);
@@ -260,9 +260,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				884519051969AD5B005CBD14 /* TNTDetailViewController.m in Sources */,
 				88C036591969B55E0008B0E4 /* TNTPerson.m in Sources */,
 				884518F81969AD5B005CBD14 /* main.m in Sources */,
+				88082723196BB84500CAFF7F /* TNTAddPersonTableViewController.m in Sources */,
 				884519021969AD5B005CBD14 /* TNTPeopleViewController.m in Sources */,
 				884518FC1969AD5B005CBD14 /* TNTAppDelegate.m in Sources */,
 			);
