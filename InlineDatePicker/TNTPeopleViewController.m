@@ -8,7 +8,6 @@
 
 #import "TNTPeopleViewController.h"
 #import "TNTPerson.h"
-#import "TNTDetailViewController.h"
 
 
 static NSString *kPersonCellID = @"personCell";
@@ -270,15 +269,15 @@ enum MyViewTags {
 }
 */
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        //NSDate *object = _objects[indexPath.row];
-        NSDate *object = _persons[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+//        //NSDate *object = _objects[indexPath.row];
+//        NSDate *object = _persons[indexPath.row];
+//        [[segue destinationViewController] setDetailItem:object];
+//    }
+//}
 
 - (IBAction)dateChanged:(UIDatePicker *)sender {
     
