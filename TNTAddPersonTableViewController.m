@@ -13,6 +13,16 @@
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)savePressed:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+
+@property (weak, nonatomic) IBOutlet UILabel *birthdayLabel;
+
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+- (IBAction)datePickerChanged:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableViewCell *datePickerCell;
+
+@property (weak, nonatomic) IBOutlet UITextField *placeOfBirthTextField;
+
 @end
 
 @implementation TNTAddPersonTableViewController
@@ -126,4 +136,6 @@
 - (IBAction)savePressed:(id)sender {
 }
 
+- (IBAction)datePickerChanged:(id)sender {
+}
 @end

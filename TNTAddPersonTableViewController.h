@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TNTAddPersonTableViewController : UITableViewController
+@interface TNTAddPersonTableViewController : UITableViewController <UITextFieldDelegate>
 
 @end
