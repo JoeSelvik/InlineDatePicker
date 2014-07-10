@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 The New Tricks. All rights reserved.
 //
 
+#import "TNTAddPersonTableViewController.h"
 #import "TNTPeopleViewController.h"
 #import "TNTPerson.h"
 
@@ -278,6 +279,25 @@ enum MyViewTags {
 //        [[segue destinationViewController] setDetailItem:object];
 //    }
 //}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"addPersonSegue"]){
+        
+        TNTAddPersonTableViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        
+        controller.delegate = self;
+    }
+}
+
+- (void)savePersonDetails:(TNTPerson *)person {
+    
+    [self.persons addObject:person];
+    
+    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:[self.persons count]-1 inSection:0]];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationFade];
+}
 
 - (IBAction)dateChanged:(UIDatePicker *)sender {
     

@@ -111,7 +111,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" title="Master" id="tQt-TN-PWz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ypa-fu-PDQ">
                             <connections>
-                                <segue destination="lj8-GA-8wf" kind="modal" id="noD-pQ-Ul9"/>
+                                <segue destination="lj8-GA-8wf" kind="modal" identifier="addPersonSegue" id="noD-pQ-Ul9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

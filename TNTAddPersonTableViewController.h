@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TNTPeopleViewController.h"
 
 @interface TNTAddPersonTableViewController : UITableViewController <UITextFieldDelegate>
+
+@property  (weak, nonatomic) id<TNTAddPersonDelegate> delegate;
 
 @end

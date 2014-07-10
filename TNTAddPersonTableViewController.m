@@ -10,11 +10,12 @@
 #define kDatePickerCellHeight 164
 
 #import "TNTAddPersonTableViewController.h"
+#import "TNTPerson.h"
 
 @interface TNTAddPersonTableViewController ()
 
 - (IBAction)cancelPressed:(id)sender;
-- (IBAction)savePressed:(id)sender;
+- (IBAction)savePressed:(UIBarButtonItem *)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
@@ -209,7 +210,15 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)savePressed:(id)sender {
+- (IBAction)savePressed:(UIBarButtonItem *)sender
+{
+    TNTPerson *person = [[TNTPerson alloc] initWithName:self.nameTextField.text
+                                          dateOfBirth:self.selectedBirthday
+                                         placeOfBirth:self.placeOfBirthTextField.text];
+    
+    [self.delegate savePersonDetails:person];
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 //- (IBAction)datePickerChanged:(id)sender

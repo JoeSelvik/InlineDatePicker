@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TNTPerson.h"
+
+@protocol TNTAddPersonDelegate <NSObject>
+
+- (void)savePersonDetails:(TNTPerson *)person;
+
+@end
+
 @interface TNTPeopleViewController : UITableViewController
 
 @end
