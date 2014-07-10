@@ -92,9 +92,12 @@
     return height;
 }
 
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 1){
+    NSLog(@"%ld", (long)[indexPath section]);
+    
+    if ([indexPath section] == 1){
         
         if (self.datePickerIsShowing){
             
