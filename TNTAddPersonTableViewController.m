@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 The New Tricks. All rights reserved.
 //
 
+#define kDatePickerIndex 2
+#define kDatePickerCellHeight 164
+
 #import "TNTAddPersonTableViewController.h"
 
 @interface TNTAddPersonTableViewController ()
@@ -22,6 +25,10 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *datePickerCell;
 
 @property (weak, nonatomic) IBOutlet UITextField *placeOfBirthTextField;
+
+@property NSDateFormatter *dateFormatter;
+@property NSDate *selectedBirthday;
+@property (nonatomic, assign) BOOL datePickerIsShowing;
 
 @end
 
@@ -45,7 +52,24 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self setupBirthdayLabel];
 }
+
+- (void)setupBirthdayLabel {
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    
+    NSDate *defaultDate = [NSDate date];
+    
+    self.birthdayLabel.text = [self.dateFormatter stringFromDate:defaultDate];
+    self.birthdayLabel.textColor = [self.tableView tintColor];
+    
+    self.selectedBirthday = defaultDate;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -53,6 +77,71 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+// Hide DOB picker until cell is tapped on.
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CGFloat height = self.tableView.rowHeight;
+    
+    if (indexPath.row == kDatePickerIndex){
+        
+        height = self.datePickerIsShowing ? kDatePickerCellHeight : 0.0f;
+        
+    }
+    
+    return height;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 1){
+        
+        if (self.datePickerIsShowing){
+            
+            [self hideDatePickerCell];
+            
+        }else {
+            
+            [self showDatePickerCell];
+        }
+    }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)showDatePickerCell {
+    
+    self.datePickerIsShowing = YES;
+    
+    [self.tableView beginUpdates];
+    
+    [self.tableView endUpdates];
+    
+    self.datePicker.hidden = NO;
+    self.datePicker.alpha = 0.0f;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.datePicker.alpha = 1.0f;
+        
+    }];
+}
+
+- (void)hideDatePickerCell {
+    
+    self.datePickerIsShowing = NO;
+    
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         self.datePicker.alpha = 0.0f;
+                     }
+                     completion:^(BOOL finished){
+                         self.datePicker.hidden = YES;
+                     }];
+}
 
 /*
 // Override to support conditional editing of the table view.
