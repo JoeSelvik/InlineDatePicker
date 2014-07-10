@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *birthdayLabel;
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-- (IBAction)datePickerChanged:(id)sender;
+- (IBAction)datePickerChanged:(UIDatePicker *)sender;
 @property (weak, nonatomic) IBOutlet UITableViewCell *datePickerCell;
 
 @property (weak, nonatomic) IBOutlet UITextField *placeOfBirthTextField;
@@ -29,6 +29,8 @@
 @property NSDateFormatter *dateFormatter;
 @property NSDate *selectedBirthday;
 @property (nonatomic, assign) BOOL datePickerIsShowing;
+
+@property UITextField *activeTextField;
 
 @end
 
@@ -54,6 +56,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self setupBirthdayLabel];
+    [self signUpForKeyboardNotifications];
 }
 
 - (void)setupBirthdayLabel {
@@ -70,6 +73,12 @@
     self.selectedBirthday = defaultDate;
 }
 
+- (void)signUpForKeyboardNotifications {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -83,7 +92,7 @@
     
     CGFloat height = self.tableView.rowHeight;
     
-    if (indexPath.row == kDatePickerIndex){
+    if ([indexPath section] == kDatePickerIndex){
         
         height = self.datePickerIsShowing ? kDatePickerCellHeight : 0.0f;
         
@@ -95,7 +104,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"%ld", (long)[indexPath section]);
+    //NSLog(@"%ld", (long)[indexPath section]);
     
     if ([indexPath section] == 1){
         
@@ -105,6 +114,7 @@
             
         }else {
             
+            [self.activeTextField resignFirstResponder];
             [self showDatePickerCell];
         }
     }
@@ -202,6 +212,29 @@
 - (IBAction)savePressed:(id)sender {
 }
 
-- (IBAction)datePickerChanged:(id)sender {
+//- (IBAction)datePickerChanged:(id)sender
+- (IBAction)datePickerChanged:(UIDatePicker *)sender
+{
+    self.birthdayLabel.text =  [self.dateFormatter stringFromDate:sender.date];
+    
+    self.selectedBirthday = sender.date;
 }
+
+
+#pragma mark - Keyboard
+
+- (void)keyboardWillShow {
+    
+    if (self.datePickerIsShowing){
+        
+        [self hideDatePickerCell];
+    }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+    self.activeTextField = textField;
+}
+
+
 @end
